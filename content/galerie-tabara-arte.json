@@ -1,0 +1,11 @@
+{
+  "poze": [
+    { "image": "imagini/tabara-arte/01.jpg", "caption": "Tabăra de arte — festivitate de final" },
+    { "image": "imagini/tabara-arte/02.jpg", "caption": "Tabăra de arte — poză de grup în parc" },
+    { "image": "imagini/tabara-arte/03.jpg", "caption": "Tabăra de arte — afișul evenimentului" },
+    { "image": "imagini/tabara-arte/04.jpg", "caption": "Tabăra de arte — spectacol stradal" },
+    { "image": "imagini/tabara-arte/05.jpg", "caption": "Tabăra de arte — spectacol stradal" },
+    { "image": "imagini/tabara-arte/06.jpg", "caption": "Tabăra de arte — plimbare pe faleză" },
+    { "image": "imagini/tabara-arte/07.jpg", "caption": "Tabăra de arte — atelier interactiv" }
+  ]
+}

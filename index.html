@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Art — Asociația pentru Cultură, Creație și Educație</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+      }
+    });
+  }
+</script>
+<style>
+  :root{
+    --paper:#FAF9F5;
+    --ink:#1B1A17;
+    --ink-soft:#55524A;
+    --line:#DEDACF;
+    --blue:#2C4A8C;
+    --blue-soft:#E7ECF6;
+    --red:#B5401D;
+    --red-soft:#F5E4DB;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;margin:0;}
+  .cat{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  a{color:inherit;}
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:20;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 32px;max-width:1080px;margin:0 auto;
+  }
+  .brand{font-family:'Fraunces',serif;font-size:19px;font-weight:600;}
+  .brand span{color:var(--blue);}
+  nav ul{list-style:none;display:flex;gap:32px;margin:0;padding:0;}
+  nav a{
+    text-decoration:none;font-size:14px;font-weight:500;
+    color:var(--ink);border-bottom:1px solid transparent;padding-bottom:2px;
+  }
+  nav a:hover{border-bottom-color:var(--blue);}
+  .menu-toggle{display:none;background:none;border:none;font-size:22px;cursor:pointer;}
+
+  /* hero */
+  .hero{
+    padding:100px 32px 90px;
+    max-width:1080px;margin:0 auto;
+    display:grid;grid-template-columns:1fr;gap:24px;
+  }
+  .hero .cat{margin-bottom:18px;}
+  .hero h1{
+    font-size:clamp(36px,6vw,64px);
+    line-height:1.06;
+    max-width:780px;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{font-style:italic;color:var(--blue);}
+  .hero p{
+    max-width:520px;color:var(--ink-soft);font-size:17px;margin-top:20px;
+  }
+  .hero-cta{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 26px;border-radius:2px;
+    font-size:14px;font-weight:600;text-decoration:none;
+    border:1px solid var(--ink);
+  }
+  .btn-solid{background:var(--ink);color:var(--paper);}
+  .btn-solid:hover{background:var(--blue);border-color:var(--blue);}
+  .btn-ghost{color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+
+  .rule{border:none;border-top:1px solid var(--line);margin:0;}
+
+  section{padding:80px 0;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-bottom:44px;flex-wrap:wrap;gap:16px;
+  }
+  .section-head h2{font-size:32px;}
+
+  /* despre noi */
+  .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start;}
+  .about-grid p{color:var(--ink-soft);font-size:16px;margin:0 0 16px;}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .stat{border-top:1px solid var(--line);padding-top:14px;}
+  .stat b{font-family:'Fraunces',serif;font-size:30px;display:block;font-weight:500;}
+  .stat span{font-size:13px;color:var(--ink-soft);}
+
+  /* proiecte - catalog style */
+  .catalog{border-top:1px solid var(--line);}
+  .entry{
+    display:grid;grid-template-columns:70px 1fr auto;gap:24px;align-items:center;
+    padding:28px 0;border-bottom:1px solid var(--line);
+  }
+  .entry .num{font-family:'JetBrains Mono',monospace;color:var(--ink-soft);font-size:13px;}
+  .entry h3{font-size:21px;margin-bottom:6px;}
+  .entry .tag{font-size:13px;color:var(--ink-soft);}
+  .entry .status{
+    font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;
+    padding:5px 10px;border-radius:20px;white-space:nowrap;
+  }
+  .status.live{background:var(--red-soft);color:var(--red);}
+  .status.done{background:var(--blue-soft);color:var(--blue);}
+  .fb-link{
+    display:inline-flex;align-items:center;gap:6px;margin-top:12px;
+    font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;
+  }
+  .fb-link:hover{text-decoration:underline;}
+  .whatsapp-link{
+    display:inline-flex;align-items:center;gap:8px;margin-top:4px;
+    color:var(--ink-soft);text-decoration:none;font-size:15px;
+  }
+  .whatsapp-link:hover{color:var(--blue);}
+
+  /* galerie */
+  .gallery{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+    background:var(--line);
+  }
+  .gallery figure{
+    margin:0;aspect-ratio:1;background:var(--blue-soft);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+  .gallery figure:nth-child(3n+1){background:var(--red-soft);}
+  .gallery figure:nth-child(4n+2){background:#EDEAE0;}
+  .gallery figcaption{
+    position:absolute;bottom:0;left:0;right:0;
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    padding:8px 10px;color:var(--ink-soft);
+  }
+  .gallery-block-title{padding-bottom:16px;}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .field{margin-bottom:18px;}
+  label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
+  input,textarea{
+    width:100%;padding:12px 14px;border:1px solid var(--line);
+    background:#fff;font-family:'Inter',sans-serif;font-size:14px;border-radius:2px;
+  }
+  textarea{resize:vertical;min-height:110px;}
+  .contact-info p{color:var(--ink-soft);margin:0 0 10px;font-size:15px;}
+  .contact-info .cat{margin-bottom:8px;}
+
+  footer{
+    border-top:1px solid var(--line);padding:32px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:13px;color:var(--ink-soft);
+  }
+
+  @media (max-width:760px){
+    nav ul{display:none;}
+    .menu-toggle{display:block;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .entry{grid-template-columns:40px 1fr;}
+    .entry .status{grid-column:2;justify-self:start;margin-top:8px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">Global<span>Art</span></div>
+    <nav><ul>
+      <li><a href="#despre">Despre noi</a></li>
+      <li><a href="#proiecte">Proiecte</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+    <button class="menu-toggle" aria-label="Meniu">☰</button>
+  </div>
+</header>
+
+<div class="hero wrap">
+  <div class="cat">Asociația pentru Cultură, Creație și Educație</div>
+  <h1>Cultura nu se privește<br>de la distanță. <em>Se face.</em></h1>
+  <p>Global Art este o asociație care organizează proiecte culturale, ateliere de creație și programe educaționale — pentru artiști, comunități și oameni curioși deopotrivă.</p>
+  <div class="hero-cta">
+    <a href="#proiecte" class="btn btn-solid">Vezi proiectele →</a>
+    <a href="#contact" class="btn btn-ghost">Devino partener</a>
+  </div>
+</div>
+
+<hr class="rule">
+
+<section id="despre">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="cat">01 — Despre noi</div>
+        <h2>Cine suntem</h2>
+      </div>
+    </div>
+    <div class="about-grid" style="grid-template-columns:1fr;max-width:680px;">
+      <div>
+        <p>Global Art a pornit dintr-o convingere simplă: cultura are cel mai mare impact atunci când ajunge acolo unde de obicei nu ajunge — în școli, în cartiere, în comunități mici, în oameni care nu s-au gândit niciodată că arta li se adresează și lor.</p>
+        <p>Lucrăm cu artiști, profesori și voluntari pentru a construi proiecte care educă, conectează și lasă ceva în urmă — nu doar un eveniment, ci o comunitate care continuă să creeze.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="proiecte">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="cat">02 — Proiecte</div>
+        <h2>Ce am făcut până acum</h2>
+      </div>
+    </div>
+    <div class="catalog">
+      <div class="entry">
+        <span class="num">№ 02</span>
+        <div>
+          <h3>Fiction Fiesta</h3>
+          <span class="tag">Spectacol itinerant · Județul Constanța, mai 2025</span>
+          <p style="color:var(--ink-soft);font-size:14px;margin:10px 0 0;max-width:560px;">Între 19 și 30 mai 2025, zece personaje emblematice din literatura română au pornit într-un turneu neobișnuit prin 10 licee din județul Constanța. Conceptul, gândit ca o „petrecere literară”, a adus fiecare personaj în fața elevilor printr-un monolog scurt și expresiv, care surprinde esența operei din care provine și temele ei centrale — iubirea, identitatea, moralitatea, alegerile, libertatea individuală. Spectacolul a îmbinat teatrul live cu muzica și tehnologia digitală, într-o formă modernă și accesibilă de a redescoperi literatura clasică. Proiectul s-a adresat cu precădere liceenilor din localități cu acces redus la resurse educaționale suplimentare — Hârșova, Castelu, Topraisar, Murfatlar, Ovidiu, Cumpăna, Negru Vodă, Eforie Sud, Nicolae Bălcescu și Poarta Albă — oferindu-le o formă de pregătire culturală relevantă și pentru examenul de Bacalaureat. Proiect cultural co-finanțat de Administrația Fondului Cultural Național.</p>
+          <a href="https://www.facebook.com/FictionFiestaAFCN" target="_blank" rel="noopener" class="fb-link"><i class="ti ti-brand-facebook" aria-hidden="true"></i> Vezi pagina de Facebook ↗</a>
+        </div>
+        <span class="status done">Finalizat</span>
+      </div>
+      <div class="entry">
+        <span class="num">№ 01</span>
+        <div>
+          <h3>Tabăra de arte performative</h3>
+          <span class="tag">Teatru, muzică și dans · Județul Constanța, iulie 2024</span>
+          <p style="color:var(--ink-soft);font-size:14px;margin:10px 0 0;max-width:560px;">Între 15 și 24 iulie 2024, Global Art a organizat 10 laboratoare mobile de arte performative — teatru, muzică și dans — pentru copii și tineri din mediul urban și rural al județului Constanța. Prin ateliere de tip „art & play”, participanții au avut ocazia să socializeze, să lucreze împreună și să lege prietenii noi într-un cadru offline, departe de ecrane, cu accent pe interacțiunea fizică și timpul petrecut în aer liber. Tabăra a folosit artele performative ca instrument prin care copiii și tinerii să descopere diversitatea culturală și să înțeleagă diferite forme de expresie artistică, stimulând creativitatea într-un mediu care încurajează explorarea și descoperirea.</p>
+          <a href="https://www.facebook.com/tabaraarteconstanta" target="_blank" rel="noopener" class="fb-link"><i class="ti ti-brand-facebook" aria-hidden="true"></i> Vezi pagina de Facebook ↗</a>
+        </div>
+        <span class="status done">Finalizat</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="galerie">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="cat">03 — Galerie</div>
+        <h2>Din proiectele noastre</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap gallery-block-title">
+    <span class="cat">Fiction Fiesta · mai 2025</span>
+  </div>
+  <div class="gallery" id="gallery-fiction-fiesta"></div>
+
+  <div class="wrap gallery-block-title" style="margin-top:40px;">
+    <span class="cat">Tabăra de arte performative · iulie 2024</span>
+  </div>
+  <div class="gallery" id="gallery-tabara-arte"></div>
+</section>
+
+<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(27,26,23,0.92);z-index:50;align-items:center;justify-content:center;padding:32px;">
+  <img id="lightbox-img" style="max-width:90%;max-height:85%;object-fit:contain;" src="" alt="">
+  <button id="lightbox-close" aria-label="Închide" style="position:absolute;top:24px;right:32px;background:none;border:none;color:#fff;font-size:28px;cursor:pointer;">×</button>
+</div>
+
+<script>
+  /* Pozele din galerie NU se mai editează aici direct.
+     Se editează din panoul de administrare: globalart.ro/admin
+     Acest cod doar citește fișierele actualizate de acolo. */
+
+  async function renderGalleryFrom(containerId, jsonPath){
+    const container = document.getElementById(containerId);
+    try {
+      const res = await fetch(jsonPath + '?t=' + Date.now());
+      const data = await res.json();
+      (data.poze || []).forEach((item) => {
+        const fig = document.createElement('figure');
+        fig.innerHTML = `<img src="${item.image}" alt="${item.caption || ''}" loading="lazy" style="width:100%;height:100%;object-fit:cover;cursor:pointer;"><figcaption>${item.caption || ''}</figcaption>`;
+        fig.querySelector('img').addEventListener('click', () => openLightbox(item.image, item.caption || ''));
+        container.appendChild(fig);
+      });
+    } catch (err) {
+      console.error('Nu am putut încărca galeria din ' + jsonPath, err);
+    }
+  }
+  renderGalleryFrom('gallery-fiction-fiesta', 'content/galerie-fiction-fiesta.json');
+  renderGalleryFrom('gallery-tabara-arte', 'content/galerie-tabara-arte.json');
+
+  function openLightbox(src, caption){
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = caption;
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+  document.getElementById('lightbox-close').addEventListener('click', () => {
+    document.getElementById('lightbox').style.display = 'none';
+  });
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if(e.target.id === 'lightbox') document.getElementById('lightbox').style.display = 'none';
+  });
+</script>
+
+<hr class="rule">
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="cat">04 — Contact</div>
+        <h2>Hai să vorbim</h2>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <form>
+        <div class="field"><label for="nume">Nume</label><input id="nume" type="text" placeholder="Numele tău"></div>
+        <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="nume@exemplu.ro"></div>
+        <div class="field"><label for="mesaj">Mesaj</label><textarea id="mesaj" placeholder="Scrie-ne câteva rânduri..."></textarea></div>
+        <a href="#" class="btn btn-solid">Trimite mesajul →</a>
+      </form>
+      <div class="contact-info">
+        <div class="cat">Date de contact</div>
+        <p>ASOCIAȚIA PENTRU CULTURĂ, CREAȚIE ȘI EDUCAȚIE „GLOBAL ART”</p>
+        <p>Persoană de contact: Luiza-Mirabela Martinescu Bordianu</p>
+        <p><a href="mailto:luizamartinescu@gmail.com" style="color:var(--blue);text-decoration:none;">luizamartinescu@gmail.com</a></p>
+        <a href="https://wa.me/40724396225" target="_blank" rel="noopener" class="whatsapp-link">
+          <i class="ti ti-brand-whatsapp" style="font-size:18px;color:#25D366;" aria-hidden="true"></i> 0724 396 225
+        </a>
+        <div class="cat" style="margin-top:20px;">Social media</div>
+        <p><a href="https://www.facebook.com/profile.php?id=61556524003639" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;">Facebook</a> · Instagram</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Asociația Global Art</span>
+  <span>globalart.ro</span>
+</footer>
+
+</body>
+</html>

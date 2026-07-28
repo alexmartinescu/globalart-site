@@ -1,0 +1,37 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "imagini/uploads"
+public_folder: "imagini/uploads"
+
+locale: "ro"
+
+collections:
+  - name: "galerie"
+    label: "Galerie foto"
+    files:
+      - name: "fiction_fiesta"
+        label: "Fiction Fiesta"
+        file: "content/galerie-fiction-fiesta.json"
+        fields:
+          - name: "poze"
+            label: "Poze"
+            widget: "list"
+            label_singular: "Poză"
+            summary: "{{fields.caption}}"
+            fields:
+              - { label: "Poză", name: "image", widget: "image" }
+              - { label: "Legendă", name: "caption", widget: "string", required: false }
+      - name: "tabara_arte"
+        label: "Tabăra de arte performative"
+        file: "content/galerie-tabara-arte.json"
+        fields:
+          - name: "poze"
+            label: "Poze"
+            widget: "list"
+            label_singular: "Poză"
+            summary: "{{fields.caption}}"
+            fields:
+              - { label: "Poză", name: "image", widget: "image" }
+              - { label: "Legendă", name: "caption", widget: "string", required: false }
