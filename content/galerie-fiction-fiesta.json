@@ -1,11 +1,35 @@
 {
   "poze": [
-    { "image": "imagini/fiction-fiesta/01.jpg", "caption": "Fiction Fiesta — culise cu publicul" },
-    { "image": "imagini/fiction-fiesta/02.jpg", "caption": "Fiction Fiesta — copii din comunitate" },
-    { "image": "imagini/fiction-fiesta/03.jpg", "caption": "Fiction Fiesta — poză de grup cu echipa" },
-    { "image": "imagini/fiction-fiesta/04.jpg", "caption": "Fiction Fiesta — scenă din spectacol" },
-    { "image": "imagini/fiction-fiesta/05.jpg", "caption": "Fiction Fiesta — scenă din spectacol" },
-    { "image": "imagini/fiction-fiesta/06.jpg", "caption": "Fiction Fiesta — interacțiune cu liceenii" },
-    { "image": "imagini/fiction-fiesta/07.jpg", "caption": "Fiction Fiesta — publicul din sală" }
+    {
+      "image": "imagini/fiction-fiesta/02.jpg",
+      "caption": "Fiction Fiesta — copii din comunitate"
+    },
+    {
+      "image": "imagini/fiction-fiesta/01.jpg",
+      "caption": "Fiction Fiesta — culise cu publicul"
+    },
+    {
+      "image": "imagini/fiction-fiesta/03.jpg",
+      "caption": "Fiction Fiesta — poză de grup cu echipa"
+    },
+    {
+      "image": "imagini/fiction-fiesta/04.jpg",
+      "caption": "Fiction Fiesta — scenă din spectacol"
+    },
+    {
+      "image": "imagini/fiction-fiesta/05.jpg",
+      "caption": "Fiction Fiesta — scenă din spectacol"
+    },
+    {
+      "image": "imagini/fiction-fiesta/06.jpg",
+      "caption": "Fiction Fiesta — interacțiune cu liceenii"
+    },
+    {
+      "image": "imagini/fiction-fiesta/07.jpg",
+      "caption": "Fiction Fiesta — publicul din sală"
+    },
+    {
+      "image": "imagini/uploads/08.jpg"
+    }
   ]
 }
