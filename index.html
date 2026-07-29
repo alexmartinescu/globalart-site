@@ -114,21 +114,38 @@
   .stat b{font-family:'Fraunces',serif;font-size:30px;display:block;font-weight:500;}
   .stat span{font-size:13px;color:var(--ink-soft);}
 
-  /* proiecte - catalog style */
+  /* proiecte - catalog style, extensibil */
   .catalog{border-top:1px solid var(--line);}
-  .entry{
-    display:grid;grid-template-columns:70px 1fr auto;gap:24px;align-items:center;
-    padding:28px 0;border-bottom:1px solid var(--line);
+  .entry{border-bottom:1px solid var(--line);}
+  .entry-summary{
+    width:100%;background:none;border:none;text-align:left;cursor:pointer;
+    display:grid;grid-template-columns:1fr auto auto;gap:20px;align-items:center;
+    padding:26px 0;font-family:inherit;color:inherit;
   }
-  .entry .num{font-family:'JetBrains Mono',monospace;color:var(--ink-soft);font-size:13px;}
-  .entry h3{font-size:21px;margin-bottom:6px;}
+  .entry-summary:hover h3{color:var(--blue);}
+  .entry h3{font-size:21px;margin-bottom:6px;transition:color .15s;}
   .entry .tag{font-size:13px;color:var(--ink-soft);}
+  .entry .summary-text{font-size:14px;color:var(--ink-soft);margin:8px 0 0;max-width:520px;}
   .entry .status{
     font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;
     padding:5px 10px;border-radius:20px;white-space:nowrap;
   }
   .status.live{background:var(--red-soft);color:var(--red);}
   .status.done{background:var(--blue-soft);color:var(--blue);}
+  .chevron{
+    font-size:20px;color:var(--ink-soft);width:28px;text-align:center;
+    transition:transform .2s;
+  }
+  .entry-summary[aria-expanded="true"] .chevron{transform:rotate(45deg);}
+  .entry-details{
+    max-height:0;overflow:hidden;
+    transition:max-height .3s ease, padding .3s ease;
+  }
+  .entry-details p{
+    color:var(--ink-soft);font-size:14px;line-height:1.7;
+    max-width:640px;margin:0 0 14px;
+  }
+  .entry-details.open{max-height:1400px;padding-bottom:28px;}
   .fb-link{
     display:inline-flex;align-items:center;gap:6px;margin-top:12px;
     font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;
@@ -192,8 +209,9 @@
     .nav{position:relative;}
     .about-grid,.contact-grid{grid-template-columns:1fr;}
     .gallery{grid-template-columns:repeat(2,1fr);}
-    .entry{grid-template-columns:40px 1fr;}
-    .entry .status{grid-column:2;justify-self:start;margin-top:8px;}
+    .entry-summary{grid-template-columns:1fr auto;}
+    .entry-summary .status{grid-column:2;justify-self:end;}
+    .entry-summary .chevron{grid-column:1/-1;justify-self:end;margin-top:-4px;}
   }
 </style>
 </head>
@@ -253,24 +271,38 @@
     </div>
     <div class="catalog">
       <div class="entry">
-        <span class="num">№ 02</span>
-        <div>
-          <h3>Fiction Fiesta</h3>
-          <span class="tag">Spectacol itinerant · Județul Constanța, mai 2025</span>
-          <p style="color:var(--ink-soft);font-size:14px;margin:10px 0 0;max-width:560px;">Între 19 și 30 mai 2025, zece personaje emblematice din literatura română au pornit într-un turneu neobișnuit prin 10 licee din județul Constanța. Conceptul, gândit ca o „petrecere literară”, a adus fiecare personaj în fața elevilor printr-un monolog scurt și expresiv, care surprinde esența operei din care provine și temele ei centrale — iubirea, identitatea, moralitatea, alegerile, libertatea individuală. Spectacolul a îmbinat teatrul live cu muzica și tehnologia digitală, într-o formă modernă și accesibilă de a redescoperi literatura clasică. Proiectul s-a adresat cu precădere liceenilor din localități cu acces redus la resurse educaționale suplimentare — Hârșova, Castelu, Topraisar, Murfatlar, Ovidiu, Cumpăna, Negru Vodă, Eforie Sud, Nicolae Bălcescu și Poarta Albă — oferindu-le o formă de pregătire culturală relevantă și pentru examenul de Bacalaureat. Proiect cultural co-finanțat de Administrația Fondului Cultural Național.</p>
+        <button class="entry-summary" onclick="toggleEntry(this)" aria-expanded="false">
+          <div class="entry-main">
+            <h3>Fiction Fiesta</h3>
+            <span class="tag">Spectacol itinerant · Județul Constanța, mai 2025</span>
+            <p class="summary-text">Zece personaje emblematice din literatura română au pornit într-un turneu prin 10 licee din județ, sub forma unei „petreceri literare”.</p>
+          </div>
+          <span class="status done">Finalizat</span>
+          <span class="chevron">＋</span>
+        </button>
+        <div class="entry-details">
+          <p>Între 19 și 30 mai 2025, zece personaje emblematice din literatura română — Vitoria Lipan (<em>Baltagul</em>), Ion și Ana (<em>Ion</em>), Ștefan Gheorghidiu (<em>Ultima noapte de dragoste, întâia noapte de război</em>), Emilia Răchitaru și Otilia Mărculescu (<em>Enigma Otiliei</em>), Maitreyi, Ilie Moromete și Victor Petrini (<em>Moromeții</em> / <em>Cel mai iubit dintre pământeni</em>), Zoe Trahanache (<em>O scrisoare pierdută</em>) — au pornit într-un turneu prin 10 licee din județul Constanța: Hârșova, Negru Vodă, Topraisar, Nicolae Bălcescu, Castelu, Poarta Albă, Ovidiu, Murfatlar, Cumpăna și Eforie Sud.</p>
+          <p>Conceptul, gândit ca o „petrecere literară”, a adus fiecare personaj în fața elevilor printr-un monolog scurt și expresiv, care surprinde esența operei din care provine și temele ei centrale — iubirea, identitatea, moralitatea, alegerile, libertatea individuală. Spectacolul a îmbinat teatrul live cu muzica și tehnologia digitală, într-o formă modernă și accesibilă de a redescoperi literatura clasică.</p>
+          <p>După fiecare reprezentație a avut loc o sesiune de întrebări și răspunsuri, în care elevii au putut provoca personajele să-și explice alegerile, urmată de o sesiune de fotografii și „autografe” din partea actorilor. Regia a fost semnată de Daniel Simion, scenariul de Ionuț Anghel, scenografia de Lăcrămioara Dumitrașcu, iar muzica de Ioannis Panagiotis Dinu.</p>
+          <p>Proiectul s-a adresat cu precădere liceenilor din localități cu acces redus la resurse educaționale suplimentare, oferindu-le o formă de pregătire culturală relevantă și pentru examenul de Bacalaureat. Proiect cultural co-finanțat de Administrația Fondului Cultural Național, cu o valoare totală de 232.500 lei.</p>
           <a href="https://www.facebook.com/FictionFiestaAFCN" target="_blank" rel="noopener" class="fb-link"><i class="ti ti-brand-facebook" aria-hidden="true"></i> Vezi pagina de Facebook ↗</a>
         </div>
-        <span class="status done">Finalizat</span>
       </div>
       <div class="entry">
-        <span class="num">№ 01</span>
-        <div>
-          <h3>Tabăra de arte performative</h3>
-          <span class="tag">Teatru, muzică și dans · Județul Constanța, iulie 2024</span>
-          <p style="color:var(--ink-soft);font-size:14px;margin:10px 0 0;max-width:560px;">Între 15 și 24 iulie 2024, Global Art a organizat 10 laboratoare mobile de arte performative — teatru, muzică și dans — pentru copii și tineri din mediul urban și rural al județului Constanța. Prin ateliere de tip „art & play”, participanții au avut ocazia să socializeze, să lucreze împreună și să lege prietenii noi într-un cadru offline, departe de ecrane, cu accent pe interacțiunea fizică și timpul petrecut în aer liber. Tabăra a folosit artele performative ca instrument prin care copiii și tinerii să descopere diversitatea culturală și să înțeleagă diferite forme de expresie artistică, stimulând creativitatea într-un mediu care încurajează explorarea și descoperirea.</p>
+        <button class="entry-summary" onclick="toggleEntry(this)" aria-expanded="false">
+          <div class="entry-main">
+            <h3>Tabăra de arte performative</h3>
+            <span class="tag">Teatru, muzică și dans · Județul Constanța, iulie 2024</span>
+            <p class="summary-text">Zece laboratoare mobile de teatru, muzică și dans, aduse în comunități urbane și rurale din județ.</p>
+          </div>
+          <span class="status done">Finalizat</span>
+          <span class="chevron">＋</span>
+        </button>
+        <div class="entry-details">
+          <p>Între 15 și 24 iulie 2024, Global Art a organizat 10 laboratoare mobile de arte performative — teatru, muzică și dans — pentru copii și tineri din mediul urban și rural al județului Constanța. Prin ateliere de tip „art & play”, participanții au avut ocazia să socializeze, să lucreze împreună și să lege prietenii noi într-un cadru offline, departe de ecrane, cu accent pe interacțiunea fizică și timpul petrecut în aer liber.</p>
+          <p>Tabăra a folosit artele performative ca instrument prin care copiii și tinerii să descopere diversitatea culturală și să înțeleagă diferite forme de expresie artistică, stimulând creativitatea într-un mediu care încurajează explorarea și descoperirea.</p>
           <a href="https://www.facebook.com/tabaraarteconstanta" target="_blank" rel="noopener" class="fb-link"><i class="ti ti-brand-facebook" aria-hidden="true"></i> Vezi pagina de Facebook ↗</a>
         </div>
-        <span class="status done">Finalizat</span>
       </div>
     </div>
   </div>
@@ -326,6 +358,13 @@
   }
   renderGalleryFrom('gallery-fiction-fiesta', 'content/galerie-fiction-fiesta.json');
   renderGalleryFrom('gallery-tabara-arte', 'content/galerie-tabara-arte.json');
+
+  /* Extindere carduri de proiecte */
+  function toggleEntry(button){
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    button.nextElementSibling.classList.toggle('open', !isOpen);
+  }
 
   /* Meniu mobil (hamburger) */
   const menuToggle = document.getElementById('menu-toggle');
