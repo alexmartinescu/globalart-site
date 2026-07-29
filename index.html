@@ -179,7 +179,17 @@
 
   @media (max-width:760px){
     nav ul{display:none;}
+    nav ul.open{
+      display:flex;flex-direction:column;gap:0;
+      position:absolute;top:100%;left:0;right:0;
+      background:var(--paper);border-bottom:1px solid var(--line);
+      padding:8px 0;z-index:30;
+    }
+    nav ul.open li{border-top:1px solid var(--line);}
+    nav ul.open li:first-child{border-top:none;}
+    nav ul.open a{display:block;padding:14px 32px;}
     .menu-toggle{display:block;}
+    .nav{position:relative;}
     .about-grid,.contact-grid{grid-template-columns:1fr;}
     .gallery{grid-template-columns:repeat(2,1fr);}
     .entry{grid-template-columns:40px 1fr;}
@@ -192,13 +202,13 @@
 <header>
   <div class="nav">
     <div class="brand">Global<span>Art</span></div>
-    <nav><ul>
+    <nav><ul id="nav-list">
       <li><a href="#despre">Despre noi</a></li>
       <li><a href="#proiecte">Proiecte</a></li>
       <li><a href="#galerie">Galerie</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul></nav>
-    <button class="menu-toggle" aria-label="Meniu">☰</button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Meniu" aria-expanded="false">☰</button>
   </div>
 </header>
 
@@ -224,8 +234,8 @@
     </div>
     <div class="about-grid" style="grid-template-columns:1fr;max-width:680px;">
       <div>
-        <p>Global Art a pornit dintr-o convingere simplă: cultura are cel mai mare impact atunci când ajunge acolo unde de obicei nu ajunge — în școli, în cartiere, în comunități mici, în oameni care nu s-au gândit niciodată că arta li se adresează și lor.</p>
-        <p>Lucrăm cu artiști, profesori și voluntari pentru a construi proiecte care educă, conectează și lasă ceva în urmă — nu doar un eveniment, ci o comunitate care continuă să creeze.</p>
+        <p>Asociația pentru Cultură, Creație și Educație GLOBAL ART, înființată în luna martie 2024, are ca scop organizarea de evenimente și proiecte culturale, sociale și de tineret, menite să impună noi standarde artistice și estetice la nivelul comunității locale, regionale, naționale și internaționale.</p>
+        <p>Asociația este condusă de Luiza Martinescu – actriță a Teatrului de Stat Constanța din anul 2004, ce a coordonat numeroase proiecte culturale în Dobrogea și a organizat evenimente culturale de succes, la nivel regional și național.</p>
       </div>
     </div>
   </div>
@@ -317,6 +327,22 @@
   renderGalleryFrom('gallery-fiction-fiesta', 'content/galerie-fiction-fiesta.json');
   renderGalleryFrom('gallery-tabara-arte', 'content/galerie-tabara-arte.json');
 
+  /* Meniu mobil (hamburger) */
+  const menuToggle = document.getElementById('menu-toggle');
+  const navList = document.getElementById('nav-list');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navList.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    menuToggle.textContent = isOpen ? '×' : '☰';
+  });
+  navList.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navList.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    });
+  });
+
   function openLightbox(src, caption){
     document.getElementById('lightbox-img').src = src;
     document.getElementById('lightbox-img').alt = caption;
@@ -351,12 +377,12 @@
         <div class="cat">Date de contact</div>
         <p>ASOCIAȚIA PENTRU CULTURĂ, CREAȚIE ȘI EDUCAȚIE „GLOBAL ART”</p>
         <p>Persoană de contact: Luiza-Mirabela Martinescu Bordianu</p>
-        <p><a href="mailto: asociatiaglobalart@gmail.com" style="color:var(--blue);text-decoration:none;"> asociatiaglobalart@gmail.com</a></p>
+        <p><a href="mailto:luizamartinescu@gmail.com" style="color:var(--blue);text-decoration:none;">luizamartinescu@gmail.com</a></p>
         <a href="https://wa.me/40724396225" target="_blank" rel="noopener" class="whatsapp-link">
           <i class="ti ti-brand-whatsapp" style="font-size:18px;color:#25D366;" aria-hidden="true"></i> 0724 396 225
         </a>
         <div class="cat" style="margin-top:20px;">Social media</div>
-        <p><a href="https://www.facebook.com/profile.php?id=61556524003639" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;">Facebook</a> 
+        <p><a href="https://www.facebook.com/profile.php?id=61556524003639" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;">Facebook</a> · Instagram</p>
       </div>
     </div>
   </div>
