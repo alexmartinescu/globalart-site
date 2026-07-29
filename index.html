@@ -406,22 +406,25 @@
       </div>
     </div>
     <div class="contact-grid">
-      <form>
-        <div class="field"><label for="nume">Nume</label><input id="nume" type="text" placeholder="Numele tău"></div>
-        <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="nume@exemplu.ro"></div>
-        <div class="field"><label for="mesaj">Mesaj</label><textarea id="mesaj" placeholder="Scrie-ne câteva rânduri..."></textarea></div>
-        <a href="#" class="btn btn-solid">Trimite mesajul →</a>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/multumim.html">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none;"><label>Nu completa acest câmp: <input name="bot-field"></label></p>
+        <div class="field"><label for="nume">Nume</label><input id="nume" name="nume" type="text" placeholder="Numele tău" required></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="nume@exemplu.ro" required></div>
+        <div class="field"><label for="mesaj">Mesaj</label><textarea id="mesaj" name="mesaj" placeholder="Scrie-ne câteva rânduri..." required></textarea></div>
+        <button type="submit" class="btn btn-solid">Trimite mesajul →</button>
       </form>
       <div class="contact-info">
         <div class="cat">Date de contact</div>
         <p>ASOCIAȚIA PENTRU CULTURĂ, CREAȚIE ȘI EDUCAȚIE „GLOBAL ART”</p>
         <p>Persoană de contact: Luiza-Mirabela Martinescu Bordianu</p>
-        <p><a href="mailto:luizamartinescu@gmail.com" style="color:var(--blue);text-decoration:none;">luizamartinescu@gmail.com</a></p>
+        <p><a href="mailto:asociatiaglobalart@gmail.com" style="color:var(--blue);text-decoration:none;">asociatiaglobalart@gmail.com</a></p>
+        <p><a href="tel:+40724396225" style="color:var(--ink-soft);text-decoration:none;">0724 396 225</a> (apel direct)</p>
         <a href="https://wa.me/40724396225" target="_blank" rel="noopener" class="whatsapp-link">
-          <i class="ti ti-brand-whatsapp" style="font-size:18px;color:#25D366;" aria-hidden="true"></i> 0724 396 225
+          <i class="ti ti-brand-whatsapp" style="font-size:18px;color:#25D366;" aria-hidden="true"></i> Scrie pe WhatsApp
         </a>
         <div class="cat" style="margin-top:20px;">Social media</div>
-        <p><a href="https://www.facebook.com/profile.php?id=61556524003639" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;">Facebook</a> · Instagram</p>
+        <p><a href="https://www.facebook.com/profile.php?id=61556524003639" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;">Facebook</a></p>
       </div>
     </div>
   </div>
