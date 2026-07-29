@@ -406,12 +406,14 @@
       </div>
     </div>
     <div class="contact-grid">
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/multumim.html">
-        <input type="hidden" name="form-name" value="contact">
-        <p style="display:none;"><label>Nu completa acest câmp: <input name="bot-field"></label></p>
-        <div class="field"><label for="nume">Nume</label><input id="nume" name="nume" type="text" placeholder="Numele tău" required></div>
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="a0060600-998a-4fd6-8fb6-098bba57e2bc">
+        <input type="hidden" name="subject" value="Mesaj nou de pe globalart.ro">
+        <input type="hidden" name="redirect" value="/multumim.html">
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+        <div class="field"><label for="nume">Nume</label><input id="nume" name="name" type="text" placeholder="Numele tău" required></div>
         <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="nume@exemplu.ro" required></div>
-        <div class="field"><label for="mesaj">Mesaj</label><textarea id="mesaj" name="mesaj" placeholder="Scrie-ne câteva rânduri..." required></textarea></div>
+        <div class="field"><label for="mesaj">Mesaj</label><textarea id="mesaj" name="message" placeholder="Scrie-ne câteva rânduri..." required></textarea></div>
         <button type="submit" class="btn btn-solid">Trimite mesajul →</button>
       </form>
       <div class="contact-info">
